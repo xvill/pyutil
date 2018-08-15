@@ -68,7 +68,7 @@ def AmapGeocode(ak, address):
     res = requests.get("http://restapi.amap.com/v3/geocode/geo",
                        params={'address': address, 'key': ak}).json()
     lng, lat = 0, 0
-    if res["info"] == 'OK':
+    if res["info"] == 'OK' and res["count"] != '0':
         lng, lat = res['geocodes'][0]['location'].split(',')
     return float(lng), float(lat)
 
