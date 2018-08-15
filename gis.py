@@ -66,7 +66,7 @@ def azimuthAngle(x1, y1, x2, y2):
 def AmapGeocode(ak, address):
     """gaodeAPI:根据传入地名参数获取经纬度"""
     res = requests.get("http://restapi.amap.com/v3/geocode/geo",
-                       params={'address': address, 'key': ak}).json()
+                       params={'address': address, 'key': ak,'city':'全国'}).json()
     lng, lat = 0, 0
     if res["info"] == 'OK' and res["count"] != '0':
         lng, lat = res['geocodes'][0]['location'].split(',')
